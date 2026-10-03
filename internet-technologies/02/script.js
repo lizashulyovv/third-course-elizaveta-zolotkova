@@ -53,9 +53,13 @@ function getStatistics(values) {
 function render() {
   const stats = getStatistics(values);
 
-  const listEl = document.querySelector('#list');
-  listEl.innerHTML = '';
+const listEl = document.querySelector('#list');
 
+if (values.length === 0) {
+  listEl.textContent = 'Список пуст';
+} else {
+  listEl.textContent = values.join(', ');
+}
   for (const value of values) {
     const li = document.createElement('li');
     li.textContent = value;
