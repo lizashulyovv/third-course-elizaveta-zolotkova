@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алгоритм ЦДА</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>Растеризация отрезка — алгоритм ЦДА</h1>
+
+        <p class="description">
+            Постройте отрезок на логической сетке 40 × 30 пикселей.
+        </p>
+
+        <section class="controls">
+
+            <div class="coordinate-group">
+                <h2>Начальная точка A</h2>
+
+                <label>
+                    X₁:
+                    <input type="number" id="x1" min="0" max="39" value="2">
+                </label>
+
+                <label>
+                    Y₁:
+                    <input type="number" id="y1" min="0" max="29" value="2">
+                </label>
+            </div>
+
+            <div class="coordinate-group">
+                <h2>Конечная точка B</h2>
+
+                <label>
+                    X₂:
+                    <input type="number" id="x2" min="0" max="39" value="20">
+                </label>
+
+                <label>
+                    Y₂:
+                    <input type="number" id="y2" min="0" max="29" value="8">
+                </label>
+            </div>
+
+        </section>
+
+        <button id="drawButton">Построить</button>
+
+        <div class="canvas-wrapper">
+            <canvas id="canvas" width="600" height="450"></canvas>
+        </div>
+
+        <h2>Таблица шагов алгоритма ЦДА</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Шаг</th>
+                    <th>x до округления</th>
+                    <th>y до округления</th>
+                    <th>Пиксель x</th>
+                    <th>Пиксель y</th>
+                </tr>
+            </thead>
+
+            <tbody id="stepsTable">
+            </tbody>
+        </table>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
