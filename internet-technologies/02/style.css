@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+input {
+  padding: 6px;
+  width: 150px;
+}
+
+button {
+  padding: 6px 12px;
+  margin: 4px 2px;
+}
+
+#error {
+  color: red;
+  margin: 10px 0;
+}
+
+.stats p {
+  margin: 6px 0;
+}
+
+#list {
+  margin-top: 10px;
+  padding-left: 20px;
+}
