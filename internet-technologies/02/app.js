@@ -60,12 +60,7 @@ if (values.length === 0) {
 } else {
   listEl.textContent = values.join(', ');
 }
-  for (const value of values) {
-    const li = document.createElement('li');
-    li.textContent = value;
-    listEl.appendChild(li);
-  }
-
+  
   document.querySelector('#count').textContent = stats.count;
   document.querySelector('#sum').textContent = stats.sum;
 
@@ -113,5 +108,8 @@ document.querySelector('#clear-btn').addEventListener('click', function () {
   clearValues();
   render();
 });
+
+console.log(values);
+console.log(getStatistics(values));
 
 render();
