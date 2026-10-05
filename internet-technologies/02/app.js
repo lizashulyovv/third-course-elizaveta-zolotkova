@@ -1,19 +1,19 @@
-const values = [];
+const numbers = [];
 
 function addValue(value) {
-  values.push(value);
+  numbers.push(value);
 }
 
 function removeLastValue() {
-  values.pop();
+  numbers.pop();
 }
 
 function clearValues() {
-  values.length = 0;
+  numbers.length = 0;
 }
 
-function getStatistics(values) {
-  const count = values.length;
+function getStatistics(numbers) {
+  const count = numbers.length;
 
   if (count === 0) {
     return {
@@ -51,14 +51,14 @@ function getStatistics(values) {
 }
 
 function render() {
-  const stats = getStatistics(values);
+  const stats = getStatistics(numbers);
 
 const listEl = document.querySelector('#list');
 
-if (values.length === 0) {
+if (numbers.length === 0) {
   listEl.textContent = 'Список пуст';
 } else {
-  listEl.textContent = values.join(', ');
+  listEl.textContent = numbers.join(', ');
 }
   
   document.querySelector('#count').textContent = stats.count;
@@ -109,7 +109,7 @@ document.querySelector('#clear-btn').addEventListener('click', function () {
   render();
 });
 
-console.log(values);
-console.log(getStatistics(values));
+console.log(numbers);
+console.log(getStatistics(numbers));
 
 render();
