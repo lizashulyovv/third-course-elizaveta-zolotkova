@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Алгоритмы растеризации отрезка</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Алгоритмы растеризации отрезка</h1>
+
+    <p class="description">
+      Сравнение алгоритмов ЦДА и Брезенхэма
+    </p>
+
+    <h2>Координаты отрезка</h2>
+
+    <div class="coordinates">
+      <label>
+        X1
+        <input type="number" id="x1" value="2" min="0" max="39" step="1">
+      </label>
+
+      <label>
+        Y1
+        <input type="number" id="y1" value="2" min="0" max="29" step="1">
+      </label>
+
+      <label>
+        X2
+        <input type="number" id="x2" value="20" min="0" max="39" step="1">
+      </label>
+
+      <label>
+        Y2
+        <input type="number" id="y2" value="8" min="0" max="29" step="1">
+      </label>
+    </div>
+
+    <h2>Выбор алгоритма</h2>
+
+    <div class="algorithm-choice">
+      <label>
+        <input type="radio" name="algorithm" value="dda" checked>
+        ЦДА
+      </label>
+
+      <label>
+        <input type="radio" name="algorithm" value="bresenham">
+        Брезенхэм
+      </label>
+    </div>
+
+    <button id="drawButton">Построить отрезок</button>
+
+    <p id="message" class="message" aria-live="polite"></p>
+
+    <h2>Результат построения</h2>
+
+    <div class="canvas-wrapper">
+      <canvas id="canvas" width="400" height="300"></canvas>
+    </div>
+
+    <h2>Таблица шагов алгоритма</h2>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Шаг</th>
+            <th>X</th>
+            <th>Y</th>
+            <th>Пиксель X</th>
+            <th>Пиксель Y</th>
+            <th>error</th>
+            <th>error 2</th>
+            <th>Изменение X</th>
+            <th>Изменение Y</th>
+          </tr>
+        </thead>
+        <tbody id="stepsTable"></tbody>
+      </table>
+    </div>
+
+    <h2>Координаты выбранных пикселей</h2>
+    <ul id="pixelList" class="pixel-list"></ul>
+
+    <section class="experiment-section">
+      <h2>Сравнение алгоритмов</h2>
+
+      <button id="compareButton">Сравнить алгоритмы</button>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Тип отрезка</th>
+              <th>Пиксели ЦДА</th>
+              <th>Пиксели Брезенхэма</th>
+              <th>Совпадание наборов</th>
+              <th>Отличающиеся координаты</th>
+            </tr>
+          </thead>
+          <tbody id="compareTable"></tbody>
+        </table>
+      </div>
+
+      <p id="compareSummary" class="message" aria-live="polite">
+        Нажми кнопку, чтобы сравнить отрезки.
+      </p>
+    </section>
+
+    <section class="experiment-section">
+      <h2> Измерение времени</h2>
+
+      <button id="benchmarkButton">Запустить эксперимент</button>
+
+      <div id="benchmarkResult" class="result-box" aria-live="polite">
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
 
