@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<title>Окружность по пикселям</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<h1>Окружность по пикселям</h1>
+
+<canvas id="canvas" width="600" height="400"></canvas>
+
+<label for="cx">X:</label>
+<input type="number" id="cx" value="20">
+
+<label for="cy">Y:</label>
+<input type="number" id="cy" value="15">
+
+<label for="r">Радиус:</label>
+<input type="number" id="r" value="5">
+
+<button id="drawButton">Построить</button>
+<button id="formulaButton">Построить по формуле</button>
+
+<button id="compareButton">Сравнить</button>
+<p id="compareResult"></p>
+
+<p id="formulaTime"></p>
+<p id="formulaPoints"></p>
+<p id="midpointTime"></p>
+<p id="midpointPoints"></p>
+
+<label>
+    <input type="checkbox" id="showStep">
+    Выделить точки одного шага
+</label>
+
+<h2>Таблица шагов</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Шаг</th>
+            <th>x</th>
+            <th>y</th>
+            <th>d до шага</th>
+            <th>Выбранный вариант</th>
+            <th>d после шага</th>
+        </tr>
+    </thead>
+    <tbody id="stepsTable">
+</tbody>
+</table>
+
+<script src="app.js"></script>
+
+</body>
+</html>
