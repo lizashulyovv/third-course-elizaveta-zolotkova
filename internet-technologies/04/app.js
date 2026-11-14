@@ -1,3 +1,4 @@
+
 const state = {
     posts: [],
     isLoading: false,
@@ -17,7 +18,7 @@ async function loadPosts() {
         );
 
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+            throw new Error('HTTP ' + response.status);
         }
 
         const posts = await response.json();
@@ -38,11 +39,11 @@ function render() {
     status.textContent = '';
 
     if (state.isLoading) {
-        status.textContent = 'Загрузка публикаций...';
+        status.textContent = 'Загрузка публикаций';
     } else if (state.isSaving) {
-        status.textContent = 'Сохранение публикации...';
+        status.textContent = 'Сохранение публикации';
     } else if (state.error) {
-        status.textContent = `Ошибка: ${state.error}`;
+        status.textContent = 'Ошибка: ' + state.error;
     }
 
     const filter = document.getElementById('searchInput').value;
@@ -85,8 +86,7 @@ function renderPosts(posts) {
             document.getElementById('formTitle').textContent =
                 'Редактирование публикации';
 
-            document.getElementById('saveButton').textContent = 'Обновить';
-            document.getElementById('cancelButton').hidden = false;
+            render();
         });
 
         const deleteButton = document.createElement('button');
@@ -124,7 +124,7 @@ async function createPost(data) {
     );
 
     if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        throw new Error('HTTP ' + response.status);
     }
 
     const newPost = await response.json();
@@ -134,7 +134,7 @@ async function createPost(data) {
 
 async function updatePost(id, data) {
     const response = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${id}`,
+        'https://jsonplaceholder.typicode.com/posts/' + id,
         {
             method: 'PATCH',
             headers: {
@@ -145,7 +145,7 @@ async function updatePost(id, data) {
     );
 
     if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        throw new Error('HTTP ' + response.status);
     }
 
     const updatedPost = await response.json();
@@ -159,14 +159,14 @@ async function updatePost(id, data) {
 
 async function deletePost(id) {
     const response = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${id}`,
+        'https://jsonplaceholder.typicode.com/posts/' + id,
         {
             method: 'DELETE'
         }
     );
 
     if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        throw new Error('HTTP ' + response.status);
     }
 
     state.posts = state.posts.filter(post => post.id !== id);
@@ -188,6 +188,8 @@ document.getElementById('postForm').addEventListener('submit', async (event) => 
     const body = bodyInput.value.trim();
 
     if (!title || !body) {
+        state.error = 'Заполните заголовок и текст публикации';
+        render();
         return;
     }
 
@@ -226,8 +228,6 @@ function resetForm() {
     document.getElementById('bodyInput').value = '';
 
     document.getElementById('formTitle').textContent = 'Новая публикация';
-    document.getElementById('saveButton').textContent = 'Сохранить';
-    document.getElementById('cancelButton').hidden = true;
 }
 
 document.getElementById('cancelButton').addEventListener('click', resetForm);
@@ -242,3 +242,5 @@ function getFilteredPosts(posts, filter) {
 }
 
 document.getElementById('searchInput').addEventListener('input', render);
+
+loadPosts();
